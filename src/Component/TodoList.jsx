@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
+import Context from './Context';
 
 const localItem = () => {
   let listed = localStorage.getItem("list");
@@ -74,12 +75,12 @@ export default function Todolist() {
           type="text"
           placeholder="enter"
           value={text}
-          onChange={SaveText}
-        />
+          onChange={SaveText}/>
 
         {toggle ? <button type="submit">Add</button> : <button>edit</button>}
       </form>
       <div>
+        
         {task.map((el) => {
           return (
             <div>
@@ -93,6 +94,7 @@ export default function Todolist() {
           );
         })}
       </div>
+      <Context data={task}/>
     </div>
   );
 }
