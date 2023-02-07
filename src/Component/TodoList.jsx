@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import Context from './Context';
+import Context from "./Context";
 
 const localItem = () => {
   let listed = localStorage.getItem("list");
@@ -13,7 +13,7 @@ const localItem = () => {
 };
 
 export default function Todolist() {
-  const [text, setText] = useState();
+  const [text, setText] = useState("");
   const [toggle, setToggle] = useState(true);
   const [task, setTask] = useState(localItem());
   const [edit, setEdit] = useState(null);
@@ -75,12 +75,12 @@ export default function Todolist() {
           type="text"
           placeholder="enter"
           value={text}
-          onChange={SaveText}/>
+          onChange={SaveText}
+        />
 
         {toggle ? <button type="submit">Add</button> : <button>edit</button>}
       </form>
       <div>
-        
         {task.map((el) => {
           return (
             <div>
@@ -94,7 +94,7 @@ export default function Todolist() {
           );
         })}
       </div>
-      <Context data={task}/>
+      <Context data={task} />
     </div>
   );
 }
